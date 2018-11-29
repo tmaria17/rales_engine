@@ -14,7 +14,7 @@ describe "Customers API" do
 
   end
 
-  it 'can get one merchant by id' do
+  it 'can get one customer by id' do
 
     id = create(:customer).id
 

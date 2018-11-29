@@ -14,7 +14,7 @@ describe "Transactions API" do
 
   end
 
-  it 'can get one merchant by id' do
+  it 'can get one transaction by id' do
     id = create(:transaction).id
 
     get "/api/v1/transactions/#{id}.json"
