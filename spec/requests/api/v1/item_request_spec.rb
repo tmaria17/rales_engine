@@ -14,7 +14,7 @@ describe "Items API" do
 
   end
 
-  it 'can get one merchant by id' do
+  it 'can get one item by id' do
 
     id = create(:item).id
 
