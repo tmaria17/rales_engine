@@ -5,6 +5,11 @@ Rails.application.routes.draw do
         get 'find', to: 'search#show'
         get 'find_all', to: 'search#index'
       end
+
+      namespace :customers do
+        get 'find_all', to: 'search#index'
+        get 'find', to: 'search#show'
+      end
      resources :merchants, only: [:index, :show]
      resources :items, only: [:index, :show]
      resources :transactions, only: [:index, :show]
