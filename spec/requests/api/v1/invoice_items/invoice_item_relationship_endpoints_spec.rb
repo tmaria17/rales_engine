@@ -32,6 +32,6 @@ describe 'Invoice Items relationships' do
   expect(response).to be_successful
 
   items = JSON.parse(response.body)
-  expect(item["data"]["id"]).to eq(item1.id.to_s)
+  expect(items["data"]["id"]).to eq(item.id.to_s)
 end
 end
