@@ -6,4 +6,13 @@ class Customer < ApplicationRecord
   has_many :transactions, through: :invoices
   default_scope { order(:id)}
 
+  def favorite_merchant
+    merchants.select("merchants.*, count(transactions.id) as count")
+    .joins(invoices: :transactions)
+    .where(transactions: {result: "success"})
+    .group(:id)
+    .order("count DESC")
+    .first
+  end
+
 end

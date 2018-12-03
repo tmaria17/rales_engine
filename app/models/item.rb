@@ -8,4 +8,21 @@ class Item < ApplicationRecord
   belongs_to :merchant
   default_scope { order(:id) }
 
+  def self.most_revenue(quantity)
+   Item.unscoped.joins(invoices: [:invoice_items, :transactions])
+   .where(transactions: {result: "success"})
+   .select("sum(invoice_items.quantity * invoice_items.unit_price) as revenue, items.*")
+   .group(:id)
+   .order("revenue DESC")
+   .limit(quantity)
+  end
+
+  def self.most_items(quantity)
+    Item.unscoped.joins(:invoice_items)
+    .select('sum(invoice_items.quantity) AS sold_items, items.*')
+    .group(:id)
+    .order('sold_items DESC')
+    .limit(quantity)
+  end
+
 end

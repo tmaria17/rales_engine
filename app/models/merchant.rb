@@ -24,11 +24,24 @@ class Merchant < ApplicationRecord
   end
 
   def self.revenue(date)
-    Merchant.select(" merchants.*, sum(invoice_items.quantity * invoice_items.unit_price) AS revenue")
-   .joins(invoice_items: [:transactions])
+    Merchant.unscoped.select(" merchants.*, sum(invoice_items.quantity * invoice_items.unit_price) AS revenue")
+   .joins(invoices: [:invoice_items, :transactions])
    .where(transactions: {result: "success"})
-   .where("invoices.created_at BETWEEN ? AND ?", date.to_date.beginning_of_day, date.to_date.end_of_day)
+   .where(invoices: {created_at: date.to_date.beginning_of_day..date.to_date.end_of_day} )
    .group(:id)
    .order(:id)
   end
+
+
+  def favorite_customer
+    Customer.unscoped
+    .select("customers.*, count(invoices.id) AS count")
+    .joins(invoices: :transactions)
+    .group(:id)
+    .where(transactions: {result: "success"})
+    .where(invoices: {merchant_id: id})
+    .order("count DESC")
+    .first
+  end
+
 end
