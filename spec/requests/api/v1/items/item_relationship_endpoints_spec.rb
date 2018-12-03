@@ -17,4 +17,18 @@ describe 'Item relationships' do
 
     expect(ii["data"].count).to eq(2)
   end
+
+  it 'returns the merchant for the item' do
+   merchant_id  = create(:merchant).id
+   item = create(:item, merchant_id: merchant_id)
+
+   get "/api/v1/items/#{item.id}/merchant"
+
+   expect(response).to be_successful
+
+   merchant = JSON.parse(response.body)
+
+   expect(merchant["data"]["id"]).to eq(merchant_id.to_s)
+
+ end
 end
