@@ -24,11 +24,5 @@ class Item < ApplicationRecord
     .order('sold_items DESC')
     .limit(quantity)
   end
-  # def self.most_revenue(quantity)
-  #   Item.select("sum(invoice_items.quantity * invoice_items.unit_price) as revenue, items.*")
-  #   .joins(:invoice_items)
-  #   .group(:id)
-  #   .order("revenue DESC")
-  #   .limit(quantity)
-  # end
+
 end
