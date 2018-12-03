@@ -23,6 +23,12 @@ class Merchant < ApplicationRecord
     .limit(quantity)
   end
 
-
-
+  def self.revenue(date)
+    Merchant.select(" merchants.*, sum(invoice_items.quantity * invoice_items.unit_price) AS revenue")
+   .joins(invoice_items: [:transactions])
+   .where(transactions: {result: "success"})
+   .where("invoices.created_at BETWEEN ? AND ?", date.to_date.beginning_of_day, date.to_date.end_of_day)
+   .group(:id)
+   .order(:id)
+  end
 end
