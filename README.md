@@ -1,24 +1,46 @@
-# README
+# Rales Engine
+First solo project for Module 3 of Turing's Back-End Engineering program. This project uses Rails and ActiveRecord to to build a JSON API that exposes sales engine data.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+# Prerequisites/ Dependencies
+ This project assumes you have installed: 
+ * Ruby 2.4.1
+ * Rails 5.2.1
+ * Byebug
+ * Capybara
+ * Pry
+ * Shoulda-Matchers
+ * SimpleCov
+ * fast_jasonapi
 
-* Ruby version
 
-* System dependencies
+## Installing
 
-* Configuration
+1. Clone down the repo:
 
-* Database creation
+` git clone git@github.com:tmaria17/rales_engine.git`
 
-* Database initialization
+2. Run:
 
-* How to run the test suite
+`bundle install`
 
-* Services (job queues, cache servers, search engines, etc.)
+`bundle update`
 
-* Deployment instructions
+3. Setup the database:
 
-* ...
+ `rake db:setup`
+ 
+ 4. Import CSV Data:
+  `rake import:all`
+
+
+
+## Running the tests
+To run the full testing suite, run `rspec` from the command line.
+
+
+
+
+## Contributors
+
+[Maria Torres](https://github.com/tmaria17]
