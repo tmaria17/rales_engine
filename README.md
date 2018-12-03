@@ -43,4 +43,4 @@ To run the full testing suite, run `rspec` from the command line.
 
 ## Contributors
 
-[Maria Torres](https://github.com/tmaria17]
+[Maria Torres](https://github.com/tmaria17)
