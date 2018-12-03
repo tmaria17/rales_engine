@@ -17,18 +17,18 @@ describe 'Invoice relationships' do
 
     expect(transactions["data"].count).to eq(10)
   end
-  # it 'returns the merchant for an invoice'do
-  #   merchant_id  = create(:merchant).id
-  #   customer_id  = create(:customer).id
-  #   invoice  = create(:invoice, merchant_id: merchant_id, customer_id: customer_id)
-  #
-  #   get "/api/v1/invoices/#{invoice.id}/merchant"
-  #
-  #   expect(response).to be_successful
-  #
-  #   merchant = JSON.parse(response.body)
-  #   expect(merchant["data"]["id"]).to eq(merchant_id.to_s)
-  # end
+  it 'returns the merchant for an invoice'do
+    merchant_id  = create(:merchant).id
+    customer_id  = create(:customer).id
+    invoice  = create(:invoice, merchant_id: merchant_id, customer_id: customer_id)
+
+    get "/api/v1/invoices/#{invoice.id}/merchant"
+
+    expect(response).to be_successful
+
+    merchant = JSON.parse(response.body)
+    expect(merchant["data"]["id"]).to eq(merchant_id.to_s)
+  end
   # it 'returns all items for an invoice'do
   #   merchant_id  = create(:merchant).id
   #   customer_id  = create(:customer).id
@@ -46,7 +46,7 @@ describe 'Invoice relationships' do
   #
   #   expect(items.count).to eq(2)
   # end
-  #
+
   # it 'returns all invoice items for an invoice'do
   #   merchant_id  = create(:merchant).id
   #   customer_id  = create(:customer).id
