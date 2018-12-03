@@ -7,6 +7,9 @@ Rails.application.routes.draw do
         get '/:id/items', to: 'items#index'
         get '/:id/invoices', to: 'invoices#index'
         get 'most_revenue', to: 'most_revenue#index'
+        get 'most_items', to: 'most_items#index'
+        get '/revenue', to:'revenue#index'
+
 
       end
 
