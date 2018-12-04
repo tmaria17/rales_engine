@@ -1,6 +1,6 @@
 # Rales Engine
 First solo project for Module 3 of Turing's Back-End Engineering program. This project uses Rails and ActiveRecord to to build a JSON API that exposes sales engine data.
-
+<a href="https://codeclimate.com/github/tmaria17/rales_engine/maintainability"><img src="https://api.codeclimate.com/v1/badges/7a1a39189fcfeb4f7928/maintainability" /></a>
 
 # Prerequisites/ Dependencies
  This project assumes you have installed: 
